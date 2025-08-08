@@ -1789,9 +1789,27 @@ namespace DerouteSharp
 
 
 
+
 		#endregion "Simulation"
 
+		#region "Layers"
 
+		private void addEmptyLayerToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			entityBox1.AddLayer();
+		}
+
+		private void groupSelectedEntitiesAsLayerToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			entityBox1.GroupSelectedEntitiesAsLayer();
+		}
+
+		private void ungroupLayerToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			entityBox1.UngroupLayer();
+		}
+
+		#endregion "Layers"
 	}       // Form1
 
 
