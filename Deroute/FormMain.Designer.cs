@@ -61,7 +61,6 @@
 			this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
 			this.deleteAllEntitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.lambdaTransformToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.addLayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.selectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.selectAllViasesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.selectAllWiresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -125,6 +124,10 @@
 			this.unitRegisterFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.unitMemoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.unitCustomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripDropDownButton7 = new System.Windows.Forms.ToolStripDropDownButton();
+			this.addEmptyLayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.groupSelectedEntitiesAsLayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ungroupLayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -178,7 +181,6 @@
 			this.tabControl2 = new System.Windows.Forms.TabControl();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
 			this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-			this.myTreeView1 = new DerouteSharp.MyTreeView();
 			this.buttonUpdateTree = new System.Windows.Forms.Button();
 			this.checkBoxLiveUpdate = new System.Windows.Forms.CheckBox();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -191,6 +193,7 @@
 			this.saveFileDialog4 = new System.Windows.Forms.SaveFileDialog();
 			this.backgroundWorkerVerilog = new System.ComponentModel.BackgroundWorker();
 			this.backgroundWorkerImageLoad = new System.ComponentModel.BackgroundWorker();
+			this.myTreeView1 = new DerouteSharp.MyTreeView();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -425,8 +428,7 @@
             this.pasteCtrlVToolStripMenuItem,
             this.toolStripSeparator9,
             this.deleteAllEntitiesToolStripMenuItem,
-            this.lambdaTransformToolStripMenuItem,
-            this.addLayerToolStripMenuItem});
+            this.lambdaTransformToolStripMenuItem});
 			this.editToolStripMenuItem.Name = "editToolStripMenuItem";
 			this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
 			this.editToolStripMenuItem.Text = "Edit";
@@ -466,13 +468,6 @@
 			this.lambdaTransformToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
 			this.lambdaTransformToolStripMenuItem.Text = "Lambda Transform";
 			this.lambdaTransformToolStripMenuItem.Click += new System.EventHandler(this.lambdaTransformToolStripMenuItem_Click);
-			// 
-			// addLayerToolStripMenuItem
-			// 
-			this.addLayerToolStripMenuItem.Name = "addLayerToolStripMenuItem";
-			this.addLayerToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
-			this.addLayerToolStripMenuItem.Text = "Add Layer";
-			this.addLayerToolStripMenuItem.Click += new System.EventHandler(this.addLayerToolStripMenuItem_Click);
 			// 
 			// selectionToolStripMenuItem
 			// 
@@ -869,6 +864,7 @@
             this.toolStripDropDownButton1,
             this.toolStripDropDownButton2,
             this.toolStripDropDownButton3,
+            this.toolStripDropDownButton7,
             this.toolStripButton5,
             this.toolStripSeparator8,
             this.toolStripButton2,
@@ -1123,6 +1119,41 @@
 			this.unitCustomToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
 			this.unitCustomToolStripMenuItem.Text = "Unit Custom";
 			this.unitCustomToolStripMenuItem.Click += new System.EventHandler(this.unitCustomToolStripMenuItem_Click);
+			// 
+			// toolStripDropDownButton7
+			// 
+			this.toolStripDropDownButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripDropDownButton7.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addEmptyLayerToolStripMenuItem,
+            this.groupSelectedEntitiesAsLayerToolStripMenuItem,
+            this.ungroupLayerToolStripMenuItem});
+			this.toolStripDropDownButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton7.Image")));
+			this.toolStripDropDownButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripDropDownButton7.Name = "toolStripDropDownButton7";
+			this.toolStripDropDownButton7.Size = new System.Drawing.Size(45, 36);
+			this.toolStripDropDownButton7.Text = "toolStripDropDownButton7";
+			this.toolStripDropDownButton7.ToolTipText = "Layers";
+			// 
+			// addEmptyLayerToolStripMenuItem
+			// 
+			this.addEmptyLayerToolStripMenuItem.Name = "addEmptyLayerToolStripMenuItem";
+			this.addEmptyLayerToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+			this.addEmptyLayerToolStripMenuItem.Text = "Add empty Layer";
+			this.addEmptyLayerToolStripMenuItem.Click += new System.EventHandler(this.addEmptyLayerToolStripMenuItem_Click);
+			// 
+			// groupSelectedEntitiesAsLayerToolStripMenuItem
+			// 
+			this.groupSelectedEntitiesAsLayerToolStripMenuItem.Name = "groupSelectedEntitiesAsLayerToolStripMenuItem";
+			this.groupSelectedEntitiesAsLayerToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+			this.groupSelectedEntitiesAsLayerToolStripMenuItem.Text = "Group selected entities as Layer";
+			this.groupSelectedEntitiesAsLayerToolStripMenuItem.Click += new System.EventHandler(this.groupSelectedEntitiesAsLayerToolStripMenuItem_Click);
+			// 
+			// ungroupLayerToolStripMenuItem
+			// 
+			this.ungroupLayerToolStripMenuItem.Name = "ungroupLayerToolStripMenuItem";
+			this.ungroupLayerToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+			this.ungroupLayerToolStripMenuItem.Text = "Ungroup Layer";
+			this.ungroupLayerToolStripMenuItem.Click += new System.EventHandler(this.ungroupLayerToolStripMenuItem_Click);
 			// 
 			// toolStripButton5
 			// 
@@ -1596,22 +1627,6 @@
 			this.splitContainer4.SplitterDistance = 507;
 			this.splitContainer4.TabIndex = 1;
 			// 
-			// myTreeView1
-			// 
-			this.myTreeView1.AllowDrop = true;
-			this.myTreeView1.CheckBoxes = true;
-			this.myTreeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.myTreeView1.Location = new System.Drawing.Point(0, 0);
-			this.myTreeView1.Name = "myTreeView1";
-			this.myTreeView1.Size = new System.Drawing.Size(205, 507);
-			this.myTreeView1.TabIndex = 0;
-			this.myTreeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.myTreeView1_AfterCheck);
-			this.myTreeView1.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.myTreeView1_ItemDrag);
-			this.myTreeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.myTreeView1_AfterSelect);
-			this.myTreeView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.myTreeView1_DragDrop);
-			this.myTreeView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.myTreeView1_DragEnter);
-			this.myTreeView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.myTreeView1_KeyDown);
-			// 
 			// buttonUpdateTree
 			// 
 			this.buttonUpdateTree.Location = new System.Drawing.Point(127, 6);
@@ -1696,6 +1711,22 @@
 			// 
 			this.backgroundWorkerImageLoad.WorkerSupportsCancellation = true;
 			this.backgroundWorkerImageLoad.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerImageLoad_DoWork);
+			// 
+			// myTreeView1
+			// 
+			this.myTreeView1.AllowDrop = true;
+			this.myTreeView1.CheckBoxes = true;
+			this.myTreeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.myTreeView1.Location = new System.Drawing.Point(0, 0);
+			this.myTreeView1.Name = "myTreeView1";
+			this.myTreeView1.Size = new System.Drawing.Size(205, 507);
+			this.myTreeView1.TabIndex = 0;
+			this.myTreeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.myTreeView1_AfterCheck);
+			this.myTreeView1.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.myTreeView1_ItemDrag);
+			this.myTreeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.myTreeView1_AfterSelect);
+			this.myTreeView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.myTreeView1_DragDrop);
+			this.myTreeView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.myTreeView1_DragEnter);
+			this.myTreeView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.myTreeView1_KeyDown);
 			// 
 			// FormMain
 			// 
@@ -1875,7 +1906,6 @@
 		private System.Windows.Forms.ToolStripMenuItem saveSceneAsNetlistToolStripMenuItem;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog3;
 		private System.Windows.Forms.ToolStripMenuItem addViasAtTheWireEndsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem addLayerToolStripMenuItem;
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.ListView listViewModules;
 		private System.Windows.Forms.ColumnHeader columnHeader3;
@@ -1909,6 +1939,10 @@
 		private System.Windows.Forms.CheckBox checkBoxLiveUpdate;
 		private System.Windows.Forms.ToolStripButton toolStripButtonSelectMode;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+		private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton7;
+		private System.Windows.Forms.ToolStripMenuItem addEmptyLayerToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem groupSelectedEntitiesAsLayerToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ungroupLayerToolStripMenuItem;
 	}
 }
 
