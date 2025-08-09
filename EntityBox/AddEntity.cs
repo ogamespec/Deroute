@@ -490,6 +490,69 @@ namespace System.Windows.Forms
 			OnEntityAdd?.Invoke(this, item, EventArgs.Empty);
 		}
 
+		public void GroupSelectedEntitiesAsLayer(bool update = true)
+		{
+			Entity item = new Entity();
+
+			item.Type = EntityType.Layer;
+			item.Label = "Layer";
+			item.LabelAlignment = TextAlignment.GlobalSettings;
+			item.Priority = 0;
+			item.Selected = false;
+			item.LambdaX = 0;
+			item.LambdaY = 0;
+			item.FontOverride = null;
+			item.SetParentControl(this);
+			item.parent = insertionNode;
+
+			// The parent of all selected entities becomes the added layer. Hierarchy is NOT preserved.
+
+			while (DrawInProgress) ;
+
+			item.Children.AddRange(GetSelected());
+			foreach (var entity in item.Children)
+			{
+				entity.parent.Children.Remove(entity);
+				entity.parent = item;
+			}
+			insertionNode.Children.Add(item);
+
+			if (update)
+			{
+				SortEntities();
+				Invalidate();
+			}
+
+			OnEntityCountChanged?.Invoke(this, EventArgs.Empty);
+			OnEntityAdd?.Invoke(this, item, EventArgs.Empty);
+		}
+
+		public void UngroupLayer (bool update = true)
+		{
+			// The parent of all descendants of an ungrouped (and deleted) layer becomes the parent of that layer.
+
+			if (insertionNode.Type != EntityType.Layer)
+			{
+				return;
+			}
+
+			while (DrawInProgress) ;
+
+			insertionNode.parent.Children.AddRange(insertionNode.Children);
+			foreach (var entity in insertionNode.parent.Children)
+			{
+				entity.parent = insertionNode.parent;
+			}
+			RemoveEntity(insertionNode);
+			SetDestinationNode(insertionNode.parent);
+
+			if (update)
+			{
+				SortEntities();
+				Invalidate();
+			}
+		}
+
 
 		public void AddEntitiesByCrosshair (List<Entity> entites)
 		{
